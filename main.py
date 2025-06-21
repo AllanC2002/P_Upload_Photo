@@ -17,25 +17,25 @@ def upload_photo():
         return jsonify({"error": "Token missing or invalid"}), 401
 
     token = auth_header.replace("Bearer ", "")
+
     try:
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         user_id = decoded.get("user_id")
+
         if not user_id:
             return jsonify({"error": "Invalid token data"}), 401
+
     except jwt.ExpiredSignatureError:
         return jsonify({"error": "Token expired"}), 401
     except jwt.InvalidTokenError:
         return jsonify({"error": "Invalid token"}), 401
 
     if 'file' not in request.files:
-        return jsonify({"error": "No image file provided"}), 400
+        return jsonify({"error": "No file part in the request"}), 400
 
     file = request.files['file']
-    if file.filename == '':
-        return jsonify({"error": "No selected file"}), 400
-
     response, code = custom_photo(user_id, file)
     return jsonify(response), code
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8081, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
