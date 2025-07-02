@@ -3,7 +3,7 @@ import requests
 BASE_URL = "http://13.219.191.189:8080/upload-photo"
 
 login_data = {
-    "User_mail": "ascorread3",
+    "User_mail": "allan",
     "password": "1234"
 }
 
