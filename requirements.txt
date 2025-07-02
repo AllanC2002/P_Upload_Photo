@@ -4,4 +4,4 @@ python-dotenv==1.0.1
 PyJWT==2.10.1
 requests==2.31.0
 pytest==8.4.1
-filetype=1.2.0
+filetype==1.2.0
