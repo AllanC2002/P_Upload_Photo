@@ -12,8 +12,8 @@ def allowed_file(filename):
 
 def custom_photo(user_id, file):
     try:
-        print(">>> Recibiendo archivo...")
-        print(">>> Nombre:", file.filename)
+        print(">>> File...")
+        print(">>> Name:", file.filename)
         print(">>> Content-Type:", file.content_type)
 
         if file.filename == '':

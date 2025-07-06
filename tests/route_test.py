@@ -1,13 +1,15 @@
 import requests
 
-BASE_URL = "http://13.219.191.189:8080/upload-photo"
-
+#BASE_URL = "http://13.219.191.189:8080/upload-photo" qa
+BASE_URL = "http://52.86.136.198:8080/upload-photo"
 login_data = {
-    "User_mail": "allancorrea",
+    "User_mail": "allanprod2",
     "password": "1234"
 }
 
-login_response = requests.post("http://52.203.72.116:8080/login", json=login_data)
+#login_response = requests.post("http://52.203.72.116:8080/login", json=login_data) qa
+login_response = requests.post("http://100.25.74.174:8080/login", json=login_data)
+
 if login_response.status_code != 200:
     print("Login failed:", login_response.status_code, login_response.text)
     exit()
@@ -15,7 +17,7 @@ if login_response.status_code != 200:
 token = login_response.json()["token"]
 print("Token:", token)
 
-image_path = "tests/test.png"  # .jpg .png  or .jpeg
+image_path = "tests/cat.jfif"  # .jpg .png  or .jpeg
 
 with open(image_path, "rb") as image_file:
     files = {"file": image_file}
